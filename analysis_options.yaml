@@ -1,28 +1,48 @@
-# This file configures the analyzer, which statically analyzes Dart code to
-# check for errors, warnings, and lints.
-#
-# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
-# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
-# invoked from the command line by running `flutter analyze`.
-
-# The following line activates a set of recommended lints for Flutter apps,
-# packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
 linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at https://dart.dev/lints.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
-
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+    # 使用 const 構造函數來減少重建物件的開銷
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_const_constructors_in_immutables: true
+    
+    # 確保所有不會變動的變數都是 final，這可以提升可讀性和避免意外修改
+    prefer_final_fields: true
+    prefer_final_locals: true
+    
+    # 強制避免使用 print，改用更專業的 log 解決方案
+    avoid_print: true
+    
+    # 強制所有 widget 構造函數添加 key 參數，這在複雜的 widget 樹中有助於更好的更新和重建控制
+    use_key_in_widget_constructors: true
+    
+    # 使用 'const' 修飾符來提高效能和減少內存佔用
+    unnecessary_new: true
+    avoid_redundant_argument_values: true
+    avoid_unnecessary_containers: true
+    
+    # 避免在集合上添加多餘的元素
+    avoid_empty_else: true
+    
+    # 保持有意義的變數名稱和函數名稱，提升可讀性
+    always_declare_return_types: true
+    always_put_required_named_parameters_first: true
+    annotate_overrides: true
+    avoid_shadowing_type_parameters: true
+    camel_case_types: true
+    
+    # 禁止在類型不明的情況下使用 dynamic，強制型別安全
+    always_specify_types: true
+    avoid_types_as_parameter_names: true
+    
+    # 移除不必要的程式碼
+    avoid_returning_null_for_void: true
+    avoid_init_to_null: true
+    unnecessary_null_in_if_null_operators: true
+    
+    # 優化控制流，減少不必要的 break 和 continue
+    unnecessary_breaks: true
+    unnecessary_this: true
+    unnecessary_lambdas: true
+    avoid_returning_this: true
