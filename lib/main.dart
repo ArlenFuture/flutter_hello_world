@@ -1,4 +1,5 @@
 import 'package:english_words/english_words.dart'; // 引入英文單字生成的套件
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart'; // 引入 Flutter 的 Material Design 元件
 import 'package:provider/provider.dart'; // 引入 Provider 套件，用於狀態管理
 
@@ -57,7 +58,9 @@ class MyHomePage extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               appState.getNext();
-              print('button pressed!');
+              if (kDebugMode) {
+                print('Next button pressed!');
+              }
             },
             // child 是按鈕內的內容，這裡是一個 Text 元件，顯示 'Next'
             child: const Text('Next'),
